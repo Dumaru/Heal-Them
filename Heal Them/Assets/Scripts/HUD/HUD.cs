@@ -28,7 +28,7 @@ public class HUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // Check for game over
     }
 
     public void UpdateHealth(int health)

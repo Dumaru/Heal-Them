@@ -29,7 +29,6 @@ public class EnemyManager : MonoBehaviour
         if (colliders.Length == 0)
         {
             Instantiate(enemyPrefab, spawnPoints[index].position, spawnPoints[index].rotation);
-
         }
     }
 
