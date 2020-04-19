@@ -56,11 +56,16 @@ public class EnemyHealth : MonoBehaviour
 
     private void Death()
     {
+        if (isMissionTarget)
+        {
+            // The target is death, you did not keep it alive.
+            Debug.Log("The mission target is dead =(");
+        }
         isDead = true;
         capsuleCollider.isTrigger = true;
         GetComponent<NavMeshAgent>().enabled = false;
 
-        Destroy(gameObject, 4);
+        Destroy(gameObject, 2);
     }
 
     #endregion
