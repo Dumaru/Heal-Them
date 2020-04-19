@@ -5,24 +5,37 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    #region Fields
+    [SerializeField]
+    private int attackAmount = 10;
+    [SerializeField]
+    private ProjectileType projectileType = ProjectileType.Kill;
     [SerializeField]
     private float force = 100;
     private Rigidbody projectileRb;
     private Timer lifeTimer;
     private float duration = 5;
+
+    #endregion
+
+    #region Properties
+
+    #endregion
+
+    #region Methods
+
     // Start is called before the first frame update
     void Start()
     {
         lifeTimer = gameObject.AddComponent<Timer>();
         lifeTimer.Duration = duration;
         lifeTimer.AddTimerFinishedListener(HandleLifeTimerFinishedEvent);
-        lifeTimer.Run();
         StartMoving(this.transform.forward);
     }
 
     private void HandleLifeTimerFinishedEvent()
     {
-        Destroy(gameObject);
+        Destroy(gameObject, 2);
     }
 
     public void StartMoving(Vector3 direction)
@@ -35,4 +48,19 @@ public class Projectile : MonoBehaviour
     void Update()
     {
     }
+
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            // Enemy hitted
+            Debug.Log("Enemy hitted " + gameObject.name);
+            EnemyHealth tempEnemeyHealth = other.gameObject.GetComponent<EnemyHealth>();
+            tempEnemeyHealth.TakeDamage(attackAmount, other.GetContact(0), projectileType);
+        }
+        lifeTimer.Run();
+    }
+    #endregion
+
 }

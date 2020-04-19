@@ -12,10 +12,7 @@ public class PlayerController : MonoBehaviour
     private Camera viewCamera;
     private Vector3 velocity;
 
-    [SerializeField]
-    private GameObject weapon;
-    [SerializeField]
-    private GameObject projectile;
+
 
     #endregion
 
@@ -30,20 +27,18 @@ public class PlayerController : MonoBehaviour
         viewCamera = Camera.main;
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
         RotateTowardsMouse();
-        velocity = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized * moveSpeed;
-        CheckMouseInput();
+        Move(h, v);
+        Animate(h, v);
     }
 
-    private void CheckMouseInput()
+    private void Animate(float h, float v)
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            // Shoot a projectile
-            GameObject projectileTemp = Instantiate(projectile, weapon.transform.position, weapon.transform.rotation);
-        }
+        Debug.Log("Animate");
     }
 
     /// <summary>
@@ -66,10 +61,13 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, -angle + 90, 0));
     }
 
-
-    void FixedUpdate()
+    private void Move(float h, float v)
     {
+        velocity = new Vector3(h, 0, v);
+        velocity = velocity.normalized * moveSpeed;
         playerRb.MovePosition(playerRb.position + velocity * Time.fixedDeltaTime);
     }
+
+
     #endregion
 }

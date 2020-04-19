@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class FieldOfView : MonoBehaviour
 {
 
+    #region Fields
     public float viewRadius;
     [Range(0, 360)]
     public float viewAngle;
@@ -14,6 +15,10 @@ public class FieldOfView : MonoBehaviour
 
     [HideInInspector]
     public List<Transform> visibleTargets = new List<Transform>();
+
+    #endregion
+
+    #region Methods
 
     void Start()
     {
@@ -61,4 +66,5 @@ public class FieldOfView : MonoBehaviour
         }
         return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
+    #endregion
 }
