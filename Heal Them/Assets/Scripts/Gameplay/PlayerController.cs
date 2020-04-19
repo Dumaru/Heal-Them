@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     private void Animate(float h, float v)
     {
-        Debug.Log("Animate");
+        // Debug.Log("Animate");
     }
 
     /// <summary>

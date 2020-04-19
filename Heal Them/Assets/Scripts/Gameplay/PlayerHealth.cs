@@ -4,9 +4,10 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     #region Fields
-    public float initialHealh = 100;
-    public float currentHealth;
+    public int initialHealh = 100;
+    public int currentHealth;
 
+    HUD hud;
     #endregion
 
     #region Properties
@@ -14,15 +15,18 @@ public class PlayerHealth : MonoBehaviour
     #endregion
     private void Start()
     {
+        hud = FindObjectOfType<HUD>();
         currentHealth = initialHealh;
     }
 
     internal void TakeDamage(int attackDamage)
     {
         currentHealth -= attackDamage;
+        hud.UpdateHealth(currentHealth);
         if (currentHealth <= 0)
         {
             Debug.Log("The player is dead");
         }
+
     }
 }

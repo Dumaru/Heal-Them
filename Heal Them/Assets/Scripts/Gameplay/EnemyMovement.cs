@@ -8,47 +8,60 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     #region Fields
-    private Transform playerTarget;
-    private NavMeshAgent navMeshAgent;
+    Transform targetTransform;
+    NavMeshAgent navMeshAgent;
 
     [SerializeField]
-    private bool chasingPlayer = false;
-    private FieldOfView enemyFieldOfView;
+    bool chasingPlayer = false;
+    FieldOfView enemyFieldOfView;
+    EnemyHealth health;
+    Transform safeZone;
     #endregion
 
     #region Methods
     // Start is called before the first frame update
     void Start()
     {
+        safeZone = GameObject.Find("Safe Zone").transform;
+        health = GetComponent<EnemyHealth>();
         enemyFieldOfView = GetComponent<FieldOfView>();
-        playerTarget = GameObject.FindGameObjectWithTag("Player").transform;
+        targetTransform = GameObject.FindGameObjectWithTag("Player").transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (chasingPlayer)
+        if (health.state.Equals(EnemyState.Zombie))
         {
-            navMeshAgent.enabled = true;
-            navMeshAgent.SetDestination(playerTarget.position);
+            // Check if player is visible
+            foreach (Transform targetTransform in enemyFieldOfView.visibleTargets)
+            {
+                if (targetTransform != null && targetTransform.gameObject.CompareTag("Player"))
+                {
+                    SetTarget(targetTransform);
+                    break;
+                }
+                else
+                {
+                    navMeshAgent.enabled = false;
+                }
+            }
         }
         else
         {
-            navMeshAgent.enabled = false;
+            // Send enemy to safe zone
+            SetTarget(safeZone);
         }
-        // Check if visible targets
-        chasingPlayer = false;
-        foreach (Transform targetTransform in enemyFieldOfView.visibleTargets)
-        {
-            if (targetTransform != null && targetTransform.gameObject.CompareTag("Player"))
-            {
-                chasingPlayer = true;
-                break;
-            }
-        }
+
     }
 
+    public void SetTarget(Transform target)
+    {
+        navMeshAgent.enabled = true;
+        navMeshAgent.SetDestination(target.position);
+
+    }
     #endregion
 
 

@@ -1,5 +1,6 @@
 public enum ProjectileType
 {
     Kill,
-    Heal
+    Heal,
+    Drag
 }

@@ -19,7 +19,15 @@ public class Projectile : MonoBehaviour
     #endregion
 
     #region Properties
-
+    public ProjectileType ProjectileType
+    {
+        get => projectileType;
+        set
+        {
+            projectileType = value;
+            // Change color
+        }
+    }
     #endregion
 
     #region Methods
