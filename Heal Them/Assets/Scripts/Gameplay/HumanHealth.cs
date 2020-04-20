@@ -44,8 +44,8 @@ public class HumanHealth : MonoBehaviour
         // //The target is death, you did not keep it alive.
         // Debug.Log("The mission target is dead =(");
         // }
-        animator.SetTrigger("IsDead");
         isDead = true;
+        animator.SetTrigger("IsDead");
         capsuleCollider.isTrigger = true;
         GetComponent<NavMeshAgent>().enabled = false;
         Destroy(gameObject, 2);

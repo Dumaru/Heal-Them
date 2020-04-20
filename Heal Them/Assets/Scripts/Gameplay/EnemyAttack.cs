@@ -59,7 +59,8 @@ public class EnemyAttack : MonoBehaviour
         else if (other.gameObject.CompareTag("Human"))
         {
             attackingPlayer = false;
-            other.gameObject.GetComponent<HumanMovement>().DecreaseVelocity(0.5f);
+            // other.gameObject.GetComponent<HumanMovement>().DecreaseVelocity(0.75f);
+            other.gameObject.GetComponent<HumanMovement>().enabled = false;
             humanHealth = other.gameObject.GetComponent<HumanHealth>();
         }
     }

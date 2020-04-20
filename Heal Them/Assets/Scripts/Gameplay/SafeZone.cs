@@ -5,10 +5,13 @@ using UnityEngine;
 public class SafeZone : MonoBehaviour
 {
 
+    HUD hud;
     HumansManager humansManager;
+    public int pointsWorth;
     // Start is called before the first frame update
     void Start()
     {
+        hud = FindObjectOfType<HUD>();
         humansManager = FindObjectOfType<HumansManager>();
     }
 
@@ -25,8 +28,8 @@ public class SafeZone : MonoBehaviour
             HumanHealth humanHealth = other.gameObject.GetComponent<HumanHealth>();
             if (humanHealth.state.Equals(HumanState.Live))
             {
-                // Mision cumplida
                 Debug.Log("Increase points");
+                hud.UpdateScore(pointsWorth);
                 Destroy(other.gameObject, 2);
             }
         }

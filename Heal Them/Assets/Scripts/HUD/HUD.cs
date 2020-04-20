@@ -47,6 +47,13 @@ public class HUD : MonoBehaviour
         ammoLeft = ammoLeft <= 0 ? 0 : ammoLeft;
         textAmmo.text = ammoLeft.ToString();
     }
+
+    public void UpdateScore(int amount)
+    {
+        Debug.Log("Update antidotes");
+        score += amount;
+        textScore.text = score.ToString();
+    }
     // public void UpdateAntidotes(int amount)
     // {
     //     Debug.Log("Update antidotes");
