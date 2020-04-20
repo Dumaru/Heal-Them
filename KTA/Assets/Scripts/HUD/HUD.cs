@@ -30,7 +30,10 @@ public class HUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Check for game over
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            MenuManager.GoToMenu(MenuName.Pause);
+        }
     }
 
     public void UpdateHealth(int health)

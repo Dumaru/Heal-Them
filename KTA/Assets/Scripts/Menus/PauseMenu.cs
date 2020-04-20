@@ -24,7 +24,6 @@ public class PauseMenu : MonoBehaviour
     public void HandleResumeButtonOnClickEvent()
     {
         AudioManager.Play(AudioClipName.MenuButtonClick);
-
         // unpause game and destroy menu
         Time.timeScale = 1;
         Destroy(gameObject);
@@ -36,7 +35,6 @@ public class PauseMenu : MonoBehaviour
     public void HandleQuitButtonOnClickEvent()
     {
         AudioManager.Play(AudioClipName.MenuButtonClick);
-
         // unpause game, destroy menu, and go to main menu
         Time.timeScale = 1;
         Destroy(gameObject);

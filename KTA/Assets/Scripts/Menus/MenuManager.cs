@@ -43,6 +43,12 @@ public static class MenuManager
                 SceneManager.LoadScene("MainMenu");
                 break;
             case MenuName.Pause:
+                // deactivate MainMenuCanvas and instantiate prefab
+                GameObject mainMenuCanvasPause = GameObject.Find("MainMenuCanvas");
+                if (mainMenuCanvasPause != null)
+                {
+                    mainMenuCanvasPause.SetActive(false);
+                }
                 // instantiate prefab
                 Object.Instantiate(Resources.Load("PauseMenu"));
                 break;
@@ -51,6 +57,12 @@ public static class MenuManager
                 Object.Instantiate(Resources.Load("GameOverMenu"));
                 break;
             case MenuName.Credits:
+                // deactivate MainMenuCanvas and instantiate prefab
+                GameObject mainMenuCanvasCred = GameObject.Find("MainMenuCanvas");
+                if (mainMenuCanvasCred != null)
+                {
+                    mainMenuCanvasCred.SetActive(false);
+                }
                 // instantiate prefab
                 Object.Instantiate(Resources.Load("CreditsMenu"));
                 break;

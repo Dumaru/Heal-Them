@@ -29,8 +29,6 @@ public static class AudioManager
         initialized = true;
         audioSource = source;
         audioClips.Add(AudioClipName.MenuButtonClick, Resources.Load<AudioClip>("Audio/BtnClick"));
-        audioClips.Add(AudioClipName.GameOver, Resources.Load<AudioClip>("Audio/GameOver"));
-
     }
 
     /// <summary>

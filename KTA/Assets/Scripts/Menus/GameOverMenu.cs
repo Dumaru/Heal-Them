@@ -23,6 +23,7 @@ public class GameOverMenu : MonoBehaviour
 
     public void HandleNextButtonClicked()
     {
+        AudioManager.Play(AudioClipName.MenuButtonClick);
         // Resumes the game time
         Time.timeScale = 1;
         SceneManager.LoadScene("Level");
@@ -30,6 +31,7 @@ public class GameOverMenu : MonoBehaviour
     }
     public void HandleMainMenuButtonClicked()
     {
+        AudioManager.Play(AudioClipName.MenuButtonClick);
         // Resumes the game time
         Time.timeScale = 1;
         MenuManager.GoToMenu(MenuName.Main);
