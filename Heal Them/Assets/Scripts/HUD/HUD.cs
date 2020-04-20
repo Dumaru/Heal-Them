@@ -18,6 +18,7 @@ public class HUD : MonoBehaviour
     public int antidotesLeft = 20;
     [SerializeField]
     private int score = 0;
+    private int scoreNeg = 0;
 
     #endregion
     // Start is called before the first frame update
@@ -51,6 +52,14 @@ public class HUD : MonoBehaviour
 
     public void UpdateScore(int amount)
     {
+        PlayerPrefs.SetFloat("score", score);
+        score += amount;
+        Debug.Log("Update score " + score);
+        textScore.text = "Score: " + score.ToString();
+    }
+    public void UpdateScoreNeg(int amount)
+    {
+        PlayerPrefs.SetFloat("score", scoreNeg);
         score += amount;
         Debug.Log("Update score " + score);
         textScore.text = "Score: " + score.ToString();

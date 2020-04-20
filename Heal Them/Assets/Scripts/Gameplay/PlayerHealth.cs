@@ -28,6 +28,7 @@ public class PlayerHealth : MonoBehaviour
         hud.UpdateHealth(currentHealth);
         if (currentHealth <= 0)
         {
+            MenuManager.GoToMenu(MenuName.GameOver);
             Debug.Log("The player is dead");
         }
 

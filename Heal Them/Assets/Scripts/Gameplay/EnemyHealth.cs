@@ -71,7 +71,6 @@ public class EnemyHealth : MonoBehaviour
         isDead = true;
         capsuleCollider.isTrigger = true;
         GetComponent<NavMeshAgent>().enabled = false;
-
         Destroy(gameObject, 2);
     }
 

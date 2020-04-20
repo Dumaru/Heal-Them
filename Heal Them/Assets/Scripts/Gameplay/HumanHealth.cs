@@ -15,11 +15,13 @@ public class HumanHealth : MonoBehaviour
     bool isDead = false;
     Animator animator;
     AudioSource audioSource;
+    HUD hud;
     #endregion
 
     #region Methods
     private void Start()
     {
+        hud = FindObjectOfType<HUD>();
         audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         hitParticlesDamage = gameObject.transform.Find("Particles").Find("DamageParticles").GetComponent<ParticleSystem>();
@@ -38,6 +40,7 @@ public class HumanHealth : MonoBehaviour
         currentHealth -= attackAmount;
         if (currentHealth <= 0)
         {
+            hud.UpdateScoreNeg(1);
             Death();
         }
     }
