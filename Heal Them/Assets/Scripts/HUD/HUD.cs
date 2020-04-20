@@ -52,17 +52,16 @@ public class HUD : MonoBehaviour
 
     public void UpdateScore(int amount)
     {
-        PlayerPrefs.SetFloat("score", score);
+        Debug.Log("Score " + score);
+        PlayerPrefs.SetInt("score", score);
         score += amount;
-        Debug.Log("Update score " + score);
         textScore.text = "Score: " + score.ToString();
     }
     public void UpdateScoreNeg(int amount)
     {
-        PlayerPrefs.SetFloat("score", scoreNeg);
-        score += amount;
-        Debug.Log("Update score " + score);
-        textScore.text = "Score: " + score.ToString();
+        scoreNeg += amount;
+        PlayerPrefs.SetInt("deads", scoreNeg);
+        Debug.Log("Deads " + scoreNeg);
     }
 
     // public void UpdateAntidotes(int amount)

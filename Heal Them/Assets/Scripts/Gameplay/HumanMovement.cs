@@ -33,11 +33,14 @@ public class HumanMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        chasingTarget = health.state.Equals(HumanState.Live);
-        animator.SetBool("IsMoving", chasingTarget);
-        if (chasingTarget)
+        if (GetComponent<HumanHealth>().currentHealth > 0)
         {
-            SetTarget(safeZone);
+            chasingTarget = health.state.Equals(HumanState.Live);
+            animator.SetBool("IsMoving", chasingTarget);
+            if (chasingTarget)
+            {
+                SetTarget(safeZone);
+            }
         }
     }
 

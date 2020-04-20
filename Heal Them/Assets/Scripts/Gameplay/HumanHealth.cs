@@ -53,10 +53,14 @@ public class HumanHealth : MonoBehaviour
         // Debug.Log("The mission target is dead =(");
         // }
         isDead = true;
-        audioSource.Stop();
-        audioSource.Play();
+        if (audioSource != null)
+        {
+            audioSource.Stop();
+            audioSource.Play();
+        }
         if (animator != null) animator.SetTrigger("IsDead");
         capsuleCollider.isTrigger = true;
+        GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<NavMeshAgent>().enabled = false;
         Destroy(gameObject, 4);
     }

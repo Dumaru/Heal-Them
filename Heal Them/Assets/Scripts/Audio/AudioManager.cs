@@ -28,16 +28,8 @@ public static class AudioManager
     {
         initialized = true;
         audioSource = source;
-        audioClips.Add(AudioClipName.MenuButtonClick, Resources.Load<AudioClip>("Audio/ButtonClick"));
-        audioClips.Add(AudioClipName.PauseGame, Resources.Load<AudioClip>("Audio/ButtonClick"));
-        audioClips.Add(AudioClipName.GameOver, Resources.Load<AudioClip>("Audio/GameOver_SFX"));
-
-        audioClips.Add(AudioClipName.CandySold, Resources.Load<AudioClip>("Audio/MoneyCollect"));
-        audioClips.Add(AudioClipName.CandyRejected, Resources.Load<AudioClip>("Audio/Reject"));
-        audioClips.Add(AudioClipName.CandyDelivered, Resources.Load<AudioClip>("Audio/CandyDelivered"));
-        audioClips.Add(AudioClipName.PlayerDeath, Resources.Load<AudioClip>("Audio/ManHitByCar"));
-
-        audioClips.Add(AudioClipName.TooMuchCars, Resources.Load<AudioClip>("Audio/HearCarHorns"));
+        audioClips.Add(AudioClipName.MenuButtonClick, Resources.Load<AudioClip>("Audio/BtnClick"));
+        audioClips.Add(AudioClipName.GameOver, Resources.Load<AudioClip>("Audio/GameOver"));
 
     }
 

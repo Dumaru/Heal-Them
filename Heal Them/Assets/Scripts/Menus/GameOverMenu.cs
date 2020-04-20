@@ -15,10 +15,10 @@ public class GameOverMenu : MonoBehaviour
     void Start()
     {
         // Pauses the game
-        AudioManager.Play(AudioClipName.GameOver);
+        // AudioManager.Play(AudioClipName.GameOver);
         Time.timeScale = 0;
-        textScore.text = "Score: " + PlayerPrefs.GetFloat("score", 0f);
-        textScoreDeads.text = "Deads: " + PlayerPrefs.GetFloat("deads", 0f);
+        textScore.text = "Score: " + PlayerPrefs.GetInt("score", 0);
+        textScoreDeads.text = "Deads: " + PlayerPrefs.GetInt("deads", 0);
     }
 
     public void HandleNextButtonClicked()

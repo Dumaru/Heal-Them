@@ -31,9 +31,12 @@ public class PlayerController : MonoBehaviour
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
-        RotateTowardsMouse();
-        Move(h, v);
-        Animate(h, v);
+        if (GetComponent<PlayerHealth>().currentHealth > 0)
+        {
+            RotateTowardsMouse();
+            Move(h, v);
+            Animate(h, v);
+        }
     }
 
     private void Animate(float h, float v)
