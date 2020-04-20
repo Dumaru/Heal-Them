@@ -38,7 +38,7 @@ public class PlayerHealth : MonoBehaviour
             animator.SetTrigger("IsDead");
             GetComponent<Rigidbody>().isKinematic = true;
             MenuManager.GoToMenu(MenuName.GameOver);
-            Debug.Log("The player is dead");
+            // Debug.Log("The player is dead");
         }
 
     }

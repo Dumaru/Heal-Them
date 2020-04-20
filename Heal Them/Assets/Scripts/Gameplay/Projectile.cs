@@ -63,7 +63,7 @@ public class Projectile : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             // Enemy hitted
-            Debug.Log("Enemy hitted " + gameObject.name);
+            // Debug.Log("Enemy hitted " + gameObject.name);
             EnemyHealth tempEnemeyHealth = other.gameObject.GetComponent<EnemyHealth>();
             tempEnemeyHealth.TakeDamage(attackAmount, other.GetContact(0), projectileType);
             // Destroy(gameObject, 0.5f);

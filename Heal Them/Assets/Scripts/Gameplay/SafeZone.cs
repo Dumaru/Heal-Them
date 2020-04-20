@@ -32,7 +32,7 @@ public class SafeZone : MonoBehaviour
             {
                 audioSource.Stop();
                 audioSource.Play();
-                Debug.Log("Increase points");
+                // Debug.Log("Increase points");
                 hud.UpdateScore(pointsWorth);
                 Destroy(other.gameObject, 2);
             }

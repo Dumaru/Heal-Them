@@ -42,7 +42,7 @@ public class EnemyAttack : MonoBehaviour
         else if (!attackingPlayer)
         {
             humanHealth.TakeDamage(attackDamage);
-            Debug.Log("Bite the human till he is dead");
+            // Debug.Log("Bite the human till he is dead");
         }
         coolDownTimer.Duration = timeBetweenAttacks;
         coolDownTimer.Run();
@@ -69,7 +69,7 @@ public class EnemyAttack : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Human"))
         {
-            Debug.Log("Dejo de ser mordido");
+            // Debug.Log("Dejo de ser mordido");
             other.gameObject.GetComponent<HumanMovement>().ResetVelocity();
         }
     }

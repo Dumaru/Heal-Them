@@ -29,17 +29,17 @@ public class PlayerShooting : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Debug.Log("Main Projectile");
+            // Debug.Log("Main Projectile");
             projectileType = ProjectileType.Kill;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            Debug.Log("Healing Projectile");
+            // Debug.Log("Healing Projectile");
             projectileType = ProjectileType.Heal;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            Debug.Log("Dragging Projectile");
+            // Debug.Log("Dragging Projectile");
             projectileType = ProjectileType.Drag;
         }
 

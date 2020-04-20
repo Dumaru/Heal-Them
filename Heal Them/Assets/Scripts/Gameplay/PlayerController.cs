@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
     private void Animate(float h, float v)
     {
-        Debug.Log("Animate");
+        // Debug.Log("Animate");
         bool moving = h != 0 || v != 0;
         playerAnim.SetBool("IsMoving", moving);
     }

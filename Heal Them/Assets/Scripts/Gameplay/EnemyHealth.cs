@@ -50,7 +50,7 @@ public class EnemyHealth : MonoBehaviour
             state = EnemyState.Human;
             hitParticlesHeal.transform.position = contactPoint.point;
             hitParticlesHeal.Play();
-            Debug.Log("It's now a human");
+            // Debug.Log("It's now a human");
         }
     }
 
