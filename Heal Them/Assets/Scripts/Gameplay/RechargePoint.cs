@@ -26,7 +26,7 @@ public class RechargePoint : MonoBehaviour
         {
             if (projectileType.Equals(ProjectileType.Kill))
             {
-                hud.UpdateAmmo(amount);
+                // hud.UpdateAmmo(amount);
             }
             else if (projectileType.Equals(ProjectileType.Heal))
             {

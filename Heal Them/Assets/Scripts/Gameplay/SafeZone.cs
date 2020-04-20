@@ -7,7 +7,7 @@ public class SafeZone : MonoBehaviour
 
     HUD hud;
     HumansManager humansManager;
-    public int pointsWorth;
+    public int pointsWorth = 10;
     // Start is called before the first frame update
     void Start()
     {

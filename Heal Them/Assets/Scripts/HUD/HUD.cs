@@ -14,9 +14,10 @@ public class HUD : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI textScore;
 
-    public int ammoLeft = 10;
-    public int antidotesLeft = 10;
-    public int score;
+    public int ammoLeft = 100;
+    public int antidotesLeft = 20;
+    [SerializeField]
+    private int score = 0;
 
     #endregion
     // Start is called before the first frame update
@@ -40,20 +41,21 @@ public class HUD : MonoBehaviour
         }
         healthSlider.value = health;
     }
-    public void UpdateAmmo(int amount)
-    {
-        Debug.Log("Update ammo");
-        ammoLeft += amount;
-        ammoLeft = ammoLeft <= 0 ? 0 : ammoLeft;
-        textAmmo.text = ammoLeft.ToString();
-    }
+    // public void UpdateAmmo(int amount)
+    // {
+    //     Debug.Log("Update ammo");
+    //     ammoLeft += amount;
+    //     ammoLeft = ammoLeft <= 0 ? 0 : ammoLeft;
+    //     textAmmo.text = ammoLeft.ToString();
+    // }
 
     public void UpdateScore(int amount)
     {
-        Debug.Log("Update antidotes");
         score += amount;
-        textScore.text = score.ToString();
+        Debug.Log("Update score " + score);
+        textScore.text = "Score: " + score.ToString();
     }
+
     // public void UpdateAntidotes(int amount)
     // {
     //     Debug.Log("Update antidotes");

@@ -55,13 +55,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 985435721}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -67.9, y: 1.2520115, z: 85.2}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -62.1, y: 1.2520115, z: 94.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 820036525}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &2006282199
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,13 +85,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006282199}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.5, z: 0, w: 0.8660254}
   m_LocalPosition: {x: -91.5, y: 1.2520115, z: 55.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 820036525}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -60, z: 0}
 --- !u!1 &6521897638576754425
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,7 +102,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6521897638576754431}
   - component: {fileID: 6521897638576754424}
-  - component: {fileID: 6521897638576754430}
   m_Layer: 0
   m_Name: Enemy Manager
   m_TagString: Untagged
@@ -140,30 +139,20 @@ MonoBehaviour:
   spaceOccupied:
     serializedVersion: 2
     m_Bits: 1536
-  enemyPrefab: {fileID: 3521241431929249233, guid: 05ba8f3c462da3e40a92048614dad3f2,
-    type: 3}
+  enemyPrefabs:
+  - {fileID: 7572697595174134493, guid: 6d21cb6cc7e230f43b818e5c9d4bbf58, type: 3}
+  - {fileID: 5695011581119619654, guid: 43079973e59edb54f862a1087951030e, type: 3}
+  - {fileID: 4303381189019711039, guid: 510352cab9bb28348a62c0a43f77ca64, type: 3}
+  - {fileID: 4465469006875582922, guid: c548d0a8fcd4da74cb647f52f8dcd0c7, type: 3}
+  - {fileID: 7481156835909878795, guid: 45169595aa7fcc34bbe256bbc5913b1b, type: 3}
+  - {fileID: 5658835751225154244, guid: 287f3d9cef35cd04f854af1850defb95, type: 3}
+  - {fileID: 810651542711277787, guid: cff02e77e17d6b34eaa6c49ae967af71, type: 3}
+  - {fileID: 8441546634517617595, guid: 5824814468e5de743a922dbc32c11905, type: 3}
+  - {fileID: 8864909753965445042, guid: 7bf1dbc4d5a7585418408ebb56c0242e, type: 3}
+  - {fileID: 5529840822029121798, guid: f5829d6d06c777a4f98913d6bbda2031, type: 3}
+  - {fileID: 2260799225637492264, guid: 4ae8cc4b9bb9a7144b2410469878a252, type: 3}
+  - {fileID: 4837313440196688207, guid: 1939b4eee9a4b97488f3d4094488eee6, type: 3}
   spawnPoints:
   - {fileID: 985435722}
   - {fileID: 2006282200}
-  spawnTime: 2
---- !u!114 &6521897638576754430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6521897638576754425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7af55f723ddd6664cb8e1203daa921f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spaceOccupied:
-    serializedVersion: 2
-    m_Bits: 1536
-  enemyPrefab: {fileID: 5982682960581702158, guid: f2551ed420100294f91f4596add77eeb,
-    type: 3}
-  spawnPoints:
-  - {fileID: 985435722}
-  - {fileID: 2006282200}
-  spawnTime: 1
+  minEnemies: 3

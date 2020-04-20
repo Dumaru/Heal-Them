@@ -29,8 +29,11 @@ public class HumanHealth : MonoBehaviour
     public void TakeDamage(int attackAmount)
     {
         if (isDead) return;
+        if (hitParticlesDamage != null)
+        {
+            hitParticlesDamage.Play();
+        }
         currentHealth -= attackAmount;
-        hitParticlesDamage.Play();
         if (currentHealth <= 0)
         {
             Death();
@@ -45,10 +48,10 @@ public class HumanHealth : MonoBehaviour
         // Debug.Log("The mission target is dead =(");
         // }
         isDead = true;
-        animator.SetTrigger("IsDead");
+        if (animator != null) animator.SetTrigger("IsDead");
         capsuleCollider.isTrigger = true;
         GetComponent<NavMeshAgent>().enabled = false;
-        Destroy(gameObject, 2);
+        Destroy(gameObject, 4);
     }
 
     #endregion

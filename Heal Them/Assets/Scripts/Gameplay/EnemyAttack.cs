@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class EnemyAttack : MonoBehaviour
 {
     #region Fields
-    public int attackDamage = 10;
+    public int attackDamage = 33;
     public float timeBetweenAttacks = 0.5f;
     GameObject player;
     PlayerHealth playerHealth;
@@ -35,7 +35,7 @@ public class EnemyAttack : MonoBehaviour
 
     private void Attack()
     {
-        if (attackingPlayer && playerHealth.currentHealth > 0)
+        if (playerInRange && attackingPlayer && playerHealth.currentHealth > 0)
         {
             playerHealth.TakeDamage(attackDamage);
         }
@@ -58,9 +58,9 @@ public class EnemyAttack : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Human"))
         {
+            playerInRange = false;
             attackingPlayer = false;
             // other.gameObject.GetComponent<HumanMovement>().DecreaseVelocity(0.75f);
-            other.gameObject.GetComponent<HumanMovement>().enabled = false;
             humanHealth = other.gameObject.GetComponent<HumanHealth>();
         }
     }

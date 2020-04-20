@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1197512832990071259}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.56, y: 0.6, z: 0}
+  m_LocalPosition: {x: -83.7, y: 0.6, z: 40.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1197512833394254154}
@@ -80,7 +80,6 @@ MonoBehaviour:
   - {fileID: 1197512832990071260}
   - {fileID: 1197512833958334054}
   rechargePointPrefabs:
-  - {fileID: 1544024058968454749, guid: da53a858409522746942d0437f433f30, type: 3}
   - {fileID: 965157763108934423, guid: 1bf4399df0a9cb2409cc28a5a8fd2484, type: 3}
 --- !u!1 &1197512833958334053
 GameObject:
@@ -106,7 +105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1197512833958334053}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.42, y: 0.6, z: 9.76}
+  m_LocalPosition: {x: -79.5, y: 0.6, z: 82.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1197512833394254154}

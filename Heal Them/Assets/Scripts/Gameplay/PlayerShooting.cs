@@ -50,7 +50,7 @@ public class PlayerShooting : MonoBehaviour
             {
                 GameObject projectileTemp = Instantiate(projectile, weapon.transform.position, weapon.transform.rotation);
                 projectileTemp.GetComponent<Projectile>().ProjectileType = projectileType;
-                hud.UpdateAmmo(-1);
+                // hud.UpdateAmmo(-1);
             }
             else if (projectileType.Equals(ProjectileType.Heal) && hud.antidotesLeft > 0)
             {
