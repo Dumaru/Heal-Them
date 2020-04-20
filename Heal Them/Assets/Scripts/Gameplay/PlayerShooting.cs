@@ -9,10 +9,13 @@ public class PlayerShooting : MonoBehaviour
     private GameObject projectile;
     ProjectileType projectileType = ProjectileType.Kill;
     HUD hud;
+
+    Animator playerAnim;
     #endregion
 
     private void Start()
     {
+        playerAnim = GetComponent<Animator>();
         hud = FindObjectOfType<HUD>();
     }
     private void Update()
@@ -38,6 +41,10 @@ public class PlayerShooting : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            if (hud.ammoLeft > 0 || hud.antidotesLeft > 0)
+            {
+                playerAnim.SetTrigger("Shoot");
+            }
             // Shoot a projectile
             if (projectileType.Equals(ProjectileType.Kill) && hud.ammoLeft > 0)
             {

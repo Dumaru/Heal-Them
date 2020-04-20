@@ -44,6 +44,7 @@ public class EnemyMovement : MonoBehaviour
                 }
                 else
                 {
+                    chasingPlayer = false;
                     navMeshAgent.enabled = false;
                 }
             }
@@ -58,6 +59,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void SetTarget(Transform target)
     {
+        chasingPlayer = true;
         navMeshAgent.enabled = true;
         navMeshAgent.SetDestination(target.position);
 

@@ -11,8 +11,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb;
     private Camera viewCamera;
     private Vector3 velocity;
-
-
+    private Animator playerAnim;
 
     #endregion
 
@@ -23,6 +22,7 @@ public class PlayerController : MonoBehaviour
     #region Methods
     void Start()
     {
+        playerAnim = GetComponent<Animator>();
         playerRb = GetComponent<Rigidbody>();
         viewCamera = Camera.main;
     }
@@ -38,7 +38,9 @@ public class PlayerController : MonoBehaviour
 
     private void Animate(float h, float v)
     {
-        // Debug.Log("Animate");
+        Debug.Log("Animate");
+        bool moving = h != 0 || v != 0;
+        playerAnim.SetBool("IsMoving", moving);
     }
 
     /// <summary>
