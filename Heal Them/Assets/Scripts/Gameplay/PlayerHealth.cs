@@ -6,8 +6,8 @@ public class PlayerHealth : MonoBehaviour
     #region Fields
     public int initialHealh = 100;
     public int currentHealth;
-
     HUD hud;
+    AudioSource audioSource;
     #endregion
 
     #region Properties
@@ -15,12 +15,15 @@ public class PlayerHealth : MonoBehaviour
     #endregion
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         hud = FindObjectOfType<HUD>();
         currentHealth = initialHealh;
     }
 
     internal void TakeDamage(int attackDamage)
     {
+        audioSource.Stop();
+        audioSource.Play();
         currentHealth -= attackDamage;
         hud.UpdateHealth(currentHealth);
         if (currentHealth <= 0)

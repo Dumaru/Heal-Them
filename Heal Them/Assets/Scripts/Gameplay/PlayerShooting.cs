@@ -9,12 +9,15 @@ public class PlayerShooting : MonoBehaviour
     private GameObject projectile;
     ProjectileType projectileType = ProjectileType.Kill;
     HUD hud;
-
     Animator playerAnim;
+    [SerializeField]
+    private AudioClip shotAudio;
+    AudioSource audioSource;
     #endregion
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         playerAnim = GetComponent<Animator>();
         hud = FindObjectOfType<HUD>();
     }
@@ -39,8 +42,11 @@ public class PlayerShooting : MonoBehaviour
             Debug.Log("Dragging Projectile");
             projectileType = ProjectileType.Drag;
         }
+
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            audioSource.Stop();
+            audioSource.PlayOneShot(shotAudio);
             if (hud.ammoLeft > 0 || hud.antidotesLeft > 0)
             {
                 playerAnim.SetTrigger("Shoot");

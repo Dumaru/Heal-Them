@@ -14,11 +14,13 @@ public class HumanHealth : MonoBehaviour
     CapsuleCollider capsuleCollider;
     bool isDead = false;
     Animator animator;
+    AudioSource audioSource;
     #endregion
 
     #region Methods
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         hitParticlesDamage = gameObject.transform.Find("Particles").Find("DamageParticles").GetComponent<ParticleSystem>();
         hitParticlesHeal = gameObject.transform.Find("Particles").Find("HealingParticles").GetComponent<ParticleSystem>();
@@ -48,6 +50,8 @@ public class HumanHealth : MonoBehaviour
         // Debug.Log("The mission target is dead =(");
         // }
         isDead = true;
+        audioSource.Stop();
+        audioSource.Play();
         if (animator != null) animator.SetTrigger("IsDead");
         capsuleCollider.isTrigger = true;
         GetComponent<NavMeshAgent>().enabled = false;

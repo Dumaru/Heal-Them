@@ -15,11 +15,13 @@ public class EnemyHealth : MonoBehaviour
     CapsuleCollider capsuleCollider;
     bool isDead = false;
     Animator animator;
+    AudioSource audioSource;
     #endregion
 
     #region Methods
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         hitParticlesDamage = gameObject.transform.Find("DamageParticles").GetComponent<ParticleSystem>();
         hitParticlesHeal = gameObject.transform.Find("HealingParticles").GetComponent<ParticleSystem>();
@@ -30,6 +32,8 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(int attackAmount, ContactPoint contactPoint, ProjectileType projectileType)
     {
         if (isDead) return;
+        audioSource.Stop();
+        audioSource.Play();
         if (projectileType.Equals(ProjectileType.Kill))
         {
             currentHealth -= attackAmount;
