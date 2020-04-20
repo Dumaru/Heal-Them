@@ -19,22 +19,14 @@ public class GameOverMenu : MonoBehaviour
         Time.timeScale = 0;
         textScore.text = "Score: " + PlayerPrefs.GetFloat("score", 0f);
         textScoreDeads.text = "Deads: " + PlayerPrefs.GetFloat("deads", 0f);
-
     }
 
     public void HandleNextButtonClicked()
     {
         // Resumes the game time
         Time.timeScale = 1;
-        if (currentLevel == 0)
-        {
-            SceneManager.LoadScene("GamePlayLevel2");
-        }
-        else
-        {
-            MenuManager.GoToMenu(MenuName.Main);
-        }
-        currentLevel++;
+        SceneManager.LoadScene("Level");
+
     }
     public void HandleMainMenuButtonClicked()
     {
