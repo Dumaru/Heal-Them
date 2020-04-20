@@ -15,6 +15,7 @@ public class HumanMovement : MonoBehaviour
     Transform safeZone;
     Animator animator;
 
+    float speed = 2;
     public float DistanceToSafeZone => Vector3.Distance(transform.position, safeZone.position);
     #endregion
 
@@ -26,6 +27,7 @@ public class HumanMovement : MonoBehaviour
         safeZone = GameObject.Find("Safe Zone").transform;
         health = GetComponent<HumanHealth>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        speed = navMeshAgent.speed;
     }
 
     // Update is called once per frame
@@ -37,6 +39,15 @@ public class HumanMovement : MonoBehaviour
         {
             SetTarget(safeZone);
         }
+    }
+
+    public void DecreaseVelocity(float amount)
+    {
+        navMeshAgent.speed -= speed * amount;
+    }
+    public void ResetVelocity()
+    {
+        navMeshAgent.speed = speed;
     }
 
     public void SetTarget(Transform target)

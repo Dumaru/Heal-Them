@@ -36,7 +36,7 @@ public class EnemyMovement : MonoBehaviour
         // Check if player is visible
         foreach (Transform targetTransf in enemyFieldOfView.visibleTargets)
         {
-            Debug.Log("Visible tag " + targetTransf.tag);
+            // Debug.Log("Visible tag " + targetTransf.tag);
             if (targetTransf != null &&
                 targetTransf.gameObject.CompareTag("Human") &&
                 targetTransf.gameObject.GetComponent<HumanMovement>().DistanceToSafeZone > 6
@@ -46,7 +46,8 @@ public class EnemyMovement : MonoBehaviour
                 break;
 
             }
-            else if (targetTransf != null)
+
+            if (targetTransf != null && targetTransform == null)
             {
                 targetTransform = targetTransf;
                 break;

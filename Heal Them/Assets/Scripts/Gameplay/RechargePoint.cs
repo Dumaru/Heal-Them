@@ -30,7 +30,7 @@ public class RechargePoint : MonoBehaviour
             }
             else if (projectileType.Equals(ProjectileType.Heal))
             {
-                hud.UpdateAntidotes(amount);
+                // hud.UpdateAntidotes(amount);
             }
             Destroy(gameObject, 0.3f);
         }

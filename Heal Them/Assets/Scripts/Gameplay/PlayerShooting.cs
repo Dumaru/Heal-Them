@@ -56,7 +56,7 @@ public class PlayerShooting : MonoBehaviour
             {
                 GameObject projectileTemp = Instantiate(projectile, weapon.transform.position, weapon.transform.rotation);
                 projectileTemp.GetComponent<Projectile>().ProjectileType = projectileType;
-                hud.UpdateAntidotes(-1);
+                // hud.UpdateAntidotes(-1);
             }
         }
     }

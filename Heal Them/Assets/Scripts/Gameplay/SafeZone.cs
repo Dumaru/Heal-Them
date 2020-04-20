@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class SafeZone : MonoBehaviour
 {
+
+    HumansManager humansManager;
     // Start is called before the first frame update
     void Start()
     {
-
+        humansManager = FindObjectOfType<HumansManager>();
     }
 
     // Update is called once per frame
@@ -26,7 +28,6 @@ public class SafeZone : MonoBehaviour
                 // Mision cumplida
                 Debug.Log("Increase points");
                 Destroy(other.gameObject, 2);
-
             }
         }
     }

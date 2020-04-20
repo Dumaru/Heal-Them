@@ -4,24 +4,33 @@ using UnityEngine;
 
 public class HumansManager : MonoBehaviour
 {
+    #region Fields
     public LayerMask spaceOccupied;
     public GameObject[] humansPrefabs;
     public Transform[] spawnPoints;
     public float spawnTime = 2;
+    int minHumans = 1;
+    int maxHumans = 3;
+
+    #endregion
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnHuman", spawnTime, spawnTime);
+        SpawnHuman();
         spaceOccupied = LayerMask.GetMask(new string[] { "Player", "Targets" });
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        GameObject[] humans = GameObject.FindGameObjectsWithTag("Human");
+        if (humans.Length <= minHumans)
+        {
+            SpawnHuman();
+        }
     }
 
-    void SpawnHuman()
+    public void SpawnHuman()
     {
         int index = Random.Range(0, spawnPoints.Length);
         int indexEne = Random.Range(0, humansPrefabs.Length);

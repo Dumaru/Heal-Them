@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,28 +8,35 @@ public class EnemyManager : MonoBehaviour
     public LayerMask spaceOccupied;
     public GameObject[] enemyPrefabs;
     public Transform[] spawnPoints;
-    public float spawnTime = 2;
+    public int minEnemies = 3;
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnEnemy", 0, spawnTime);
+        SpawnEnemy();
         spaceOccupied = LayerMask.GetMask(new string[] { "Player", "Targets" });
     }
+
 
     // Update is called once per frame
     void Update()
     {
-
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemies.Length < minEnemies)
+        {
+            SpawnEnemy();
+        }
     }
 
     void SpawnEnemy()
     {
-        int index = Random.Range(0, spawnPoints.Length);
-        int indexEne = Random.Range(0, enemyPrefabs.Length);
-        Collider[] colliders = Physics.OverlapBox(spawnPoints[index].position, transform.localScale * 2, Quaternion.identity, spaceOccupied);
-        if (colliders.Length == 0)
+        int index = UnityEngine.Random.Range(0, enemyPrefabs.Length);
+        foreach (Transform spawnPo in spawnPoints)
         {
-            Instantiate(enemyPrefabs[indexEne], spawnPoints[index].position, spawnPoints[index].rotation);
+            Collider[] colliders = Physics.OverlapBox(spawnPo.position, transform.localScale * 2, Quaternion.identity, spaceOccupied);
+            if (colliders.Length == 0)
+            {
+                Instantiate(enemyPrefabs[index], spawnPo.position, spawnPo.rotation);
+            }
         }
     }
 

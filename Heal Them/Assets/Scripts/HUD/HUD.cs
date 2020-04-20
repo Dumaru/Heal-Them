@@ -47,11 +47,11 @@ public class HUD : MonoBehaviour
         ammoLeft = ammoLeft <= 0 ? 0 : ammoLeft;
         textAmmo.text = ammoLeft.ToString();
     }
-    public void UpdateAntidotes(int amount)
-    {
-        Debug.Log("Update antidotes");
-        antidotesLeft += amount;
-        antidotesLeft = antidotesLeft <= 0 ? 0 : antidotesLeft;
-        textAntidotes.text = antidotesLeft.ToString();
-    }
+    // public void UpdateAntidotes(int amount)
+    // {
+    //     Debug.Log("Update antidotes");
+    //     antidotesLeft += amount;
+    //     antidotesLeft = antidotesLeft <= 0 ? 0 : antidotesLeft;
+    //     textAntidotes.text = antidotesLeft.ToString();
+    // }
 }

@@ -41,7 +41,6 @@ public class EnemyAttack : MonoBehaviour
         }
         else if (!attackingPlayer)
         {
-
             humanHealth.TakeDamage(attackDamage);
             Debug.Log("Bite the human till he is dead");
         }
@@ -60,15 +59,8 @@ public class EnemyAttack : MonoBehaviour
         else if (other.gameObject.CompareTag("Human"))
         {
             attackingPlayer = false;
+            other.gameObject.GetComponent<HumanMovement>().DecreaseVelocity(0.5f);
             humanHealth = other.gameObject.GetComponent<HumanHealth>();
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.CompareTag("Human"))
-        {
-            other.gameObject.GetComponent<NavMeshAgent>().velocity = other.gameObject.GetComponent<NavMeshAgent>().velocity / 2;
         }
     }
 
@@ -77,6 +69,7 @@ public class EnemyAttack : MonoBehaviour
         if (other.gameObject.CompareTag("Human"))
         {
             Debug.Log("Dejo de ser mordido");
+            other.gameObject.GetComponent<HumanMovement>().ResetVelocity();
         }
     }
     #endregion
