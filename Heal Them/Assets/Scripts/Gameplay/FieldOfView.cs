@@ -50,7 +50,8 @@ public class FieldOfView : MonoBehaviour
 
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
-                    visibleTargets.Add(target);
+                    if (target != null)
+                        visibleTargets.Add(target);
                 }
             }
         }

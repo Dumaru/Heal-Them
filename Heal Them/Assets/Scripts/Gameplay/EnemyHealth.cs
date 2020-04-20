@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour
 {
     #region Fields
     public GameObject healthyBody;
+    public bool isMissionTarget = false;
     public float initialZombieHealth = 100;
     public float currentHealth;
     public EnemyState state = EnemyState.Zombie;
@@ -13,12 +14,13 @@ public class EnemyHealth : MonoBehaviour
     ParticleSystem hitParticlesHeal;
     CapsuleCollider capsuleCollider;
     bool isDead = false;
-    public bool isMissionTarget = false;
+    Animator animator;
     #endregion
 
     #region Methods
     private void Start()
     {
+        animator = GetComponent<Animator>();
         hitParticlesDamage = gameObject.transform.Find("DamageParticles").GetComponent<ParticleSystem>();
         hitParticlesHeal = gameObject.transform.Find("HealingParticles").GetComponent<ParticleSystem>();
         capsuleCollider = GetComponent<CapsuleCollider>();
@@ -56,11 +58,12 @@ public class EnemyHealth : MonoBehaviour
 
     private void Death()
     {
-        if (isMissionTarget)
-        {
-            // The target is death, you did not keep it alive.
-            Debug.Log("The mission target is dead =(");
-        }
+        // if (isMissionTarget)
+        // {
+        // //The target is death, you did not keep it alive.
+        // Debug.Log("The mission target is dead =(");
+        // }
+        animator.SetTrigger("Dead");
         isDead = true;
         capsuleCollider.isTrigger = true;
         GetComponent<NavMeshAgent>().enabled = false;

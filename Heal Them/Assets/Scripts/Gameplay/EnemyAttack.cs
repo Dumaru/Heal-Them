@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyAttack : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField]
     bool playerInRange = false;
     Timer coolDownTimer;
+    bool attackingPlayer;
+    HumanHealth humanHealth;
     #endregion
 
     #region Methods
@@ -24,7 +27,7 @@ public class EnemyAttack : MonoBehaviour
 
     private void Update()
     {
-        if (playerInRange && coolDownTimer.Finished)
+        if ((playerInRange || !attackingPlayer) && coolDownTimer.Finished)
         {
             Attack();
         }
@@ -32,9 +35,15 @@ public class EnemyAttack : MonoBehaviour
 
     private void Attack()
     {
-        if (playerHealth.currentHealth > 0)
+        if (attackingPlayer && playerHealth.currentHealth > 0)
         {
             playerHealth.TakeDamage(attackDamage);
+        }
+        else if (!attackingPlayer)
+        {
+
+            humanHealth.TakeDamage(attackDamage);
+            Debug.Log("Bite the human till he is dead");
         }
         coolDownTimer.Duration = timeBetweenAttacks;
         coolDownTimer.Run();
@@ -44,8 +53,30 @@ public class EnemyAttack : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            attackingPlayer = true;
             coolDownTimer.Run();
             playerInRange = true;
+        }
+        else if (other.gameObject.CompareTag("Human"))
+        {
+            attackingPlayer = false;
+            humanHealth = other.gameObject.GetComponent<HumanHealth>();
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Human"))
+        {
+            other.gameObject.GetComponent<NavMeshAgent>().velocity = other.gameObject.GetComponent<NavMeshAgent>().velocity / 2;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Human"))
+        {
+            Debug.Log("Dejo de ser mordido");
         }
     }
     #endregion

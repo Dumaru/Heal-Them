@@ -18,17 +18,15 @@ public class SafeZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Human"))
         {
-            EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
-            if (enemyHealth.state.Equals(EnemyState.Human))
+            HumanHealth humanHealth = other.gameObject.GetComponent<HumanHealth>();
+            if (humanHealth.state.Equals(HumanState.Live))
             {
+                // Mision cumplida
+                Debug.Log("Increase points");
                 Destroy(other.gameObject, 2);
-                if (enemyHealth.isMissionTarget)
-                {
-                    // Mision cumplida
-                    Debug.Log("Mision cumplida, el objetivo regreso sano y salvo");
-                }
+
             }
         }
     }

@@ -9766,6 +9766,7 @@ GameObject:
   - component: {fileID: 8441546634517608715}
   - component: {fileID: 8441546634517608714}
   - component: {fileID: 8441546634517608713}
+  - component: {fileID: 361113889}
   m_Layer: 9
   m_Name: Zombie_FootballPlayer
   m_TagString: Enemy
@@ -10008,7 +10009,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -10032,11 +10033,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d1918f4a5d754c41b335d41901decd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 30
+  viewRadius: 20
   viewAngle: 140
   targetMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1536
   obstacleMask:
     serializedVersion: 2
     m_Bits: 256
@@ -10053,7 +10054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5467033801166d14c930c23f3974bb59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chasingPlayer: 0
+  chasingTarget: 0
 --- !u!114 &8441546634517608714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10067,10 +10068,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthyBody: {fileID: 0}
+  isMissionTarget: 0
   initialZombieHealth: 100
   currentHealth: 0
   state: 0
-  isMissionTarget: 0
 --- !u!114 &8441546634517608713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10086,6 +10087,22 @@ MonoBehaviour:
   attackDamage: 10
   timeBetweenAttacks: 0.5
   playerInRange: 0
+--- !u!208 &361113889
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441546634517617595}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.4, y: 0.775, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.51, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8441546634517617783
 GameObject:
   m_ObjectHideFlags: 0

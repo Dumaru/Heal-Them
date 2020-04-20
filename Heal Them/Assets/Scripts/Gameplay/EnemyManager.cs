@@ -5,13 +5,13 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public LayerMask spaceOccupied;
-    public GameObject enemyPrefab;
+    public GameObject[] enemyPrefabs;
     public Transform[] spawnPoints;
     public float spawnTime = 2;
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnEnemy", spawnTime, spawnTime);
+        InvokeRepeating("SpawnEnemy", 0, spawnTime);
         spaceOccupied = LayerMask.GetMask(new string[] { "Player", "Targets" });
     }
 
@@ -23,12 +23,12 @@ public class EnemyManager : MonoBehaviour
 
     void SpawnEnemy()
     {
-
         int index = Random.Range(0, spawnPoints.Length);
+        int indexEne = Random.Range(0, enemyPrefabs.Length);
         Collider[] colliders = Physics.OverlapBox(spawnPoints[index].position, transform.localScale * 2, Quaternion.identity, spaceOccupied);
         if (colliders.Length == 0)
         {
-            Instantiate(enemyPrefab, spawnPoints[index].position, spawnPoints[index].rotation);
+            Instantiate(enemyPrefabs[indexEne], spawnPoints[index].position, spawnPoints[index].rotation);
         }
     }
 

@@ -12,54 +12,64 @@ public class EnemyMovement : MonoBehaviour
     NavMeshAgent navMeshAgent;
 
     [SerializeField]
-    bool chasingPlayer = false;
+    bool chasingTarget = false;
     FieldOfView enemyFieldOfView;
     EnemyHealth health;
     Transform safeZone;
+    Animator animator;
     #endregion
 
     #region Methods
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         safeZone = GameObject.Find("Safe Zone").transform;
         health = GetComponent<EnemyHealth>();
         enemyFieldOfView = GetComponent<FieldOfView>();
-        targetTransform = GameObject.FindGameObjectWithTag("Player").transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (health.state.Equals(EnemyState.Zombie))
+        // Check if player is visible
+        foreach (Transform targetTransf in enemyFieldOfView.visibleTargets)
         {
-            // Check if player is visible
-            foreach (Transform targetTransform in enemyFieldOfView.visibleTargets)
+            Debug.Log("Visible tag " + targetTransf.tag);
+            if (targetTransf != null &&
+                targetTransf.gameObject.CompareTag("Human") &&
+                targetTransf.gameObject.GetComponent<HumanMovement>().DistanceToSafeZone > 6
+                )
             {
-                if (targetTransform != null && targetTransform.gameObject.CompareTag("Player"))
-                {
-                    SetTarget(targetTransform);
-                    break;
-                }
-                else
-                {
-                    chasingPlayer = false;
-                    navMeshAgent.enabled = false;
-                }
+                targetTransform = targetTransf;
+                break;
+
             }
+            else if (targetTransf != null)
+            {
+                targetTransform = targetTransf;
+                break;
+            }
+        }
+
+        if (targetTransform != null)
+        {
+            SetTarget(targetTransform);
         }
         else
         {
-            // Send enemy to safe zone
-            SetTarget(safeZone);
+            chasingTarget = false;
+            navMeshAgent.enabled = false;
         }
+
+        animator.SetBool("Walking", chasingTarget);
 
     }
 
     public void SetTarget(Transform target)
     {
-        chasingPlayer = true;
+        chasingTarget = true;
         navMeshAgent.enabled = true;
         navMeshAgent.SetDestination(target.position);
 
